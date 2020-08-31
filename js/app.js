@@ -30,3 +30,14 @@ const form = document.forms["addTodoItem"];
 const inputText = form.elements["todoText"];
 const ul = document.querySelector(".list-group");
 const clearBtn = document.querySelector(".clear-btn");
+
+window.addEventListener("load", function (e) {
+  let ls = localstorage.getTasks();
+  if (ls.length) {
+    ls.forEach((task) => {
+      tasks.addTask(task).then((oneTask) => ui.addTask(oneTask));
+    });
+  } else {
+    ui.checkList();
+  }
+});
