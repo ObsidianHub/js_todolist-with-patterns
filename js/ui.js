@@ -31,6 +31,14 @@ const UI = (function () {
     li.remove();
   };
 
+  const checkList = function () {
+    if (!ul.children.length) {
+      emptyAlert.style.display = "block";
+    } else {
+      emptyAlert.style.display = "none";
+    }
+  };
+
   const deleteAll = function () {
     ul.innerHTML = "";
   };
