@@ -22,6 +22,10 @@ const UI = (function () {
     return li;
   };
 
+  const addTask = function (task) {
+    ul.insertAdjacentElement("afterbegin", listTemplate(task));
+  };
+
   const deleteAll = function () {
     ul.innerHTML = "";
   };
