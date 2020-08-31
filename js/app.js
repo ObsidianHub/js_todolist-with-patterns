@@ -41,3 +41,18 @@ window.addEventListener("load", function (e) {
     ui.checkList();
   }
 });
+
+ul.addEventListener("click", function (e) {
+  if (e.target.classList.contains("delete-item")) {
+    let id = e.target.closest("li").getAttribute("data-id");
+    tasks
+      .removeTask(id)
+      .then(() => ui.deleteTask(id))
+      .then(() =>
+        removeTaskObserver.fire({
+          text: "Задача удалена успешно!",
+          class: "alert alert-warning",
+        })
+      );
+  }
+});
