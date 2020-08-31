@@ -26,6 +26,11 @@ const UI = (function () {
     ul.insertAdjacentElement("afterbegin", listTemplate(task));
   };
 
+  const deleteTask = function (id) {
+    const li = ul.querySelector(`[data-id=${id}]`);
+    li.remove();
+  };
+
   const deleteAll = function () {
     ul.innerHTML = "";
   };
