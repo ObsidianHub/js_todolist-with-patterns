@@ -56,3 +56,15 @@ ul.addEventListener("click", function (e) {
       );
   }
 });
+
+clearBtn.addEventListener("click", function (e) {
+  tasks
+    .removeAll()
+    .then(() => ui.deleteAll())
+    .then(() =>
+      removeAllTasksObserver.fire({
+        text: "Все задачи были успешно удалены!",
+        class: "alert alert-warning",
+      })
+    );
+});
