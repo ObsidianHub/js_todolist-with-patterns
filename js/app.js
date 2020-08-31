@@ -42,6 +42,24 @@ window.addEventListener("load", function (e) {
   }
 });
 
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  if (!inputText.value) {
+    // show error, is-invalid
+  } else {
+    tasks
+      .addTask({ text: inputText.value })
+      .then((task) => ui.addTask(task))
+      .then(() =>
+        addTaskObserver.fire({
+          text: "Новая задача добавлена успешно!",
+          class: "alert alert-success",
+        })
+      );
+  }
+});
+
 ul.addEventListener("click", function (e) {
   if (e.target.classList.contains("delete-item")) {
     let id = e.target.closest("li").getAttribute("data-id");
